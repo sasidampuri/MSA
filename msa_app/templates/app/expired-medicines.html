@@ -1,0 +1,62 @@
+{% extends 'app/base.html' %}
+
+
+{% load static %}
+
+
+{% load crispy_forms_tags %}
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">  
+
+
+<div class="container" style="opacity: 0.8">
+    <div class="col-md-2"></div>
+    <div class="panel panel-default col-md-8 jumcust2">
+        <div class="panel-body">
+
+    <form method="POST" class="form-group">
+
+         
+
+        {% csrf_token %}
+        
+          <h1  style ="text-align:center; "> Expired medicines list</h1>
+
+      <table style="width:100%">
+        <tr>
+            <th>Medicine ID</th>
+            <th>Available Stock</th>
+            <th>Batch ID</th>
+            <th>Vendor ID</th>
+            <th>Email</th>
+            <th>Address</th>
+        </tr>
+        {% for med in expired_meds %}
+        <tr>
+            <td>{{med.med_id}}</td>
+            <td>{{med.available_stock}}</td>
+            <td>{{med.batch_id}}</td>
+            <td>{{med.ven_id}}</td>
+            <td>{{med.ven_email}}</td>
+            <td>{{med.ven_address}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+     </form>
+
+
+
+      <form method="get" action="/generateexpiredmedpdf">
+
+        <button  class="btn btn-success" style ="width: 100%;" >PDF</button>
+      </form>
+
+      </div>
+    </div>
+  </div>
+
+
+
+    
+{% endblock %}

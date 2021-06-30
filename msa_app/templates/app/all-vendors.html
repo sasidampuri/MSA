@@ -1,0 +1,63 @@
+{% extends 'app/base.html' %}
+
+
+{% load static %}
+
+
+{% load crispy_forms_tags %}
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">  
+
+
+<div class="container" style="opacity: 0.8">
+    <div class="col-md-2"></div>
+    <div class="panel panel-default col-md-8 jumcust2">
+        <div class="panel-body">
+
+    <form method="POST" class="form-group">
+
+         
+
+        {% csrf_token %}
+        
+          <h1  style ="text-align:center; "> Vendors list</h1>
+          <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for vendors..">
+      <table style="width:100%" id="myTable">
+        <tr>
+            <th>Vendor Name</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Address</th>
+            <th>Vendor ID</th>
+            <th>Medicine IDs</th>
+        </tr>
+        {% for vendor in vendors %}
+        <tr>
+            <td>{{vendor.vendor_name}}</td>
+            <td>{{vendor.email}}</td>
+            <td>{{vendor.mobile}}</td>
+            <td>{{vendor.address}}</td>
+            <td>{{vendor.vendor_id}}</td>
+            <td>{{vendor.medicine_ids}}</td>
+            <td><a href="/editvendor/{{vendor.vendor_id}}">Edit</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+     </form>
+
+
+
+      <form method="get" action="/generatevenpdf">
+
+        <button  class="btn btn-success" style ="width: 100%;" >PDF</button>
+      </form>
+
+      </div>
+    </div>
+  </div>
+
+
+
+    
+{% endblock %}

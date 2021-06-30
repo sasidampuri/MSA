@@ -1,0 +1,41 @@
+
+{% extends 'registration/base.html' %}
+
+
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<div class="container" style="opacity: 0.8">
+    <div class="col-md-2"></div>
+    <div class="panel panel-default col-md-8 jumcust2">
+        <div class="panel-body">
+
+
+<form method="POST" class="form-group">
+     
+    	{% csrf_token %}
+       
+
+    <h1> About us </h1>
+
+    <p>A medical shop Automation needs to maintain its inventory  using a computerized system so that it maintains the records of purchases, sales , medicines, vendors and stock details.</p>
+
+    <p>
+    
+    Medical Shop Automation is a self-contained product  which  is designed to ease the workload of medical shop professionals .The main objective for this MSA project is to reduce the workload of the user  by easing in the order of medicines whenever some medicines expire or the quantity falls below the threshold value and during billing the software produces a bill which includes the purchased medicines  list and its details and the amount to be paid.
+    </p>
+
+ </form>
+
+  </div>
+    </div>
+  </div>
+
+
+
+{% endblock %}
+
+
+
+

@@ -1,0 +1,44 @@
+<html>
+ <head>
+   <title>Test</title>
+   <style>
+     h1 {
+       text-align: center;
+     }
+
+     table {
+       border: 1px solid;
+       margin: 0 auto;
+       width: 70%;
+     }
+
+     td, th {
+       text-align: center;
+       border: 1px solid;
+     }
+   </style>
+ </head>
+ <body>
+   <h1>List of Expired medicines</h1>
+   <table>
+     <tr>
+            <th>Medicine ID</th>
+            <th>Available Stock</th>
+            <th>Batch ID</th>
+            <th>Vendor ID</th>
+            <th>Email</th>
+            <th>Address</th>
+        </tr>
+        {% for med in expired_meds %}
+        <tr>
+            <td>{{med.med_id}}</td>
+            <td>{{med.available_stock}}</td>
+            <td>{{med.batch_id}}</td>
+            <td>{{med.ven_id}}</td>
+            <td>{{med.ven_email}}</td>
+            <td>{{med.ven_address}}</td>
+        </tr>
+        {% endfor %}
+   </table>
+ </body>
+</html>

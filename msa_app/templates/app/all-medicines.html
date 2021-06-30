@@ -1,0 +1,58 @@
+{% extends 'app/base.html' %}
+
+
+{% load static %}
+
+
+{% load crispy_forms_tags %}
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">  
+
+<div class="container" style="opacity: 0.8">
+    <div class="col-md-2"></div>
+    <div class="panel panel-default col-md-8 jumcust2">
+        <div class="panel-body">
+
+    <form method="POST" class="form-group">
+
+         
+
+        {% csrf_token %}
+        
+          <h1  style ="text-align:center; "> Medicines list</h1>
+          <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for medicines..">
+      <table style="width:100%" id="myTable">
+         <tr>
+            <th>Generic Name</th>
+            <th>Medicine ID</th>
+            <th>Trade Name</th>
+            <th>Unit Sell Price</th>
+            <th>Unit Purchase Price</th>
+        </tr>
+        {% for medicine in medicines %}
+        <tr>
+            <td>{{medicine.generic_name}}</td>
+            <td>{{medicine.medicine_id}}</td>
+            <td>{{medicine.trade_name}}</td>
+            <td>{{medicine.unit_sell_price}}</td>
+            <td>{{medicine.unit_purchase_price}}</td>
+            <td><a href="/editmedicine/{{medicine.medicine_id}}">Edit</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+     </form>
+
+     <form method="get" action="/generatemedpdf">
+
+        <button  class="btn btn-success" style ="width: 100%;" >PDF</button>
+      </form>
+
+      </div>
+    </div>
+  </div>
+
+
+
+    
+{% endblock %}

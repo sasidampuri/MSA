@@ -1,0 +1,61 @@
+<html>
+ <head>
+   <title>Test</title>
+   <style>
+     h1 {
+       text-align: center;
+     }
+
+     table {
+       border: 1px solid;
+       margin: 0 auto;
+       width: 70%;
+     }
+
+     td, th {
+       text-align: center;
+       border: 1px solid;
+     }
+   </style>
+ </head>
+ <body>
+   <h1>Bill</h1>
+     
+   {% for b in bill %}
+
+   {% if b.bill_id ==  i  %}
+
+
+  
+    <p>Customer Name      : {{b.customer_name}}</p>
+    <p>Customer Phone no. : {{b.customer_number}}</p>
+
+  {% endif %}
+
+  {% endfor %}
+       
+        <table style="width:100%">
+            <tr>
+                <th>Medicine ID</th>
+                <th>Quantity</th>
+            </tr>
+            {% for s in sales %}
+            {% if   s.sale_id  == i %}
+                <td>{{s.medicine_id}}</td>
+                <td>{{s.quantity}}</td>
+               {% endif %}
+            </tr>
+            
+            {% endfor %}
+
+    {% for b in bill %}
+
+   {% if   b.bill_id == i %}
+
+    <p>Total Amount   : {{b.amount}}</p>
+   
+
+  {% endif %}
+  {% endfor %}
+ </body>
+</html>

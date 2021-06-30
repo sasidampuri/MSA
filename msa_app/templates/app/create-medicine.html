@@ -1,0 +1,48 @@
+{% extends 'app/base.html' %}
+
+
+{% load static %}
+
+
+{% load crispy_forms_tags %}
+{% block content %}
+
+  <link rel="stylesheet" href="{% static 'css/style.css' %}"> 
+
+  <div class="container" style="opacity: 0.8">
+    <div class="col-md-2"></div>
+    <div class="panel panel-default col-md-8 jumcust2">
+        <div class="panel-body">
+
+
+    <form method="POST" class="form-group">
+
+         	
+
+        {% csrf_token %}
+        
+     
+        
+          <h1  style ="text-align:center; "> Add Medicine Details</h1>
+
+           {% if med_id %} <h3 style ="text-align:center; background:green; color: white;" >&#9733; The medicine id generated for this medicine is  {{med_id}}   &#9733; </h3>{%endif%}
+
+            {% if err %}<h3 style ="text-align:center; background:green; color: white;"> &#9733;{{err}}&#9733; </h3>{%endif%}
+
+
+           {{form_med|crispy}}
+
+
+        <button type="submit" class="btn btn-success" style ="width:100%">Register</button>
+
+
+     </form>
+
+     </div>
+    </div>
+  </div>
+
+
+
+    
+{% endblock %}

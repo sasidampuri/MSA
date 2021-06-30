@@ -1,0 +1,138 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-theme.min.css' %}">
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="shortcut icon" href="{% static 'css/images/favicon2.ico' %}"/>
+    <script defer src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"
+            integrity="sha384-4oV5EgaV02iISL2ban6c/RmotsABqE4yZxZLcYMAdG7FAPsyHYAPpywE9PJo+Khy"
+            crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{% static 'js/npm.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+    <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//cdn.bootcss.com/bootstrap-datetimepicker/4.17.44/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <script src="//cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdn.bootcss.com/moment.js/2.17.1/moment.min.js"></script>
+    <script src="//cdn.bootcss.com/bootstrap-datetimepicker/4.17.44/js/bootstrap-datetimepicker.min.js"></script>
+    
+    <style>
+        #myInput {
+          background-image: url("/css/searchicon.png"); /* Add a search icon to input */
+          background-position: 10px 12px; /* Position the search icon */
+          background-repeat: no-repeat; /* Do not repeat the icon image */
+          width: 100%; /* Full-width */
+          font-size: 16px; /* Increase font-size */
+          padding: 12px 20px 12px 40px; /* Add some padding */
+          border: 1px solid #ddd; /* Add a grey border */
+          margin-bottom: 12px; /* Add some space below the input */
+        }
+      </style>
+      <script>
+        function myFunction() {
+          // Declare variables
+          var input, filter, table, tr, td, i, txtValue;
+          input = document.getElementById("myInput");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("myTable");
+          tr = table.getElementsByTagName("tr");
+  
+          // Loop through all table rows, and hide those who don't match the search query
+          for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+              txtValue = td.textContent || td.innerText;
+              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
+            }
+          }
+        }
+      </script>
+
+
+</head>
+    <body>
+        <!-- nav bar here -->
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+   
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a href="/user/" class="navbar-brand"><i class="fas fa-home"></i>HOME</a>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#thisnav">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                     </button>
+                 </div>
+
+                 <div class="collapse navbar-collapse" id="thisnav">
+             <ul class="nav navbar-nav">
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> Vendors Information<b class="caret"></b></a>
+                    <ul id="dealer-menu" class="dropdown-menu inverse-dropdown">
+                        <li><a href="/createven/">Add Vendor Details</a></li>
+                        <li><a href="/allvendors/">View Vendor Details</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Medicine Management<b
+                        class="caret"></b></a>
+                    <ul id="med-menu" class="dropdown-menu inverse-dropdown">
+                        <li><a href="/createmed/">Add Medicine Details</a></li>
+                        <li><a href="/addstock/">Add Stock details</a></li>
+                        <li><a href="/allmedicines/">View Medicine Details</a></li>
+                        <li><a href="/expiredmedicines/">View Expired medicines details</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Employee Management<b
+                        class="caret"></b></a>
+                    <ul id="emp-menu" class="dropdown-menu inverse-dropdown">
+                        <li><a href="/createuser/">Add Employee Details</a></li>
+                        <li><a href="/allemployees/">View Employee Details</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Sales Information<b
+                        class="caret"></b></a>
+                    <ul id="cust-menu" class="dropdown-menu inverse-dropdown">
+                        <li><a href="/sales/">Sales</a></li>
+                        <li><a href="/viewsales/">View Sales</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Purchase Information<b class="caret"></b></a>
+                    <ul id="cust-menu" class="dropdown-menu inverse-dropdown">
+                        <li><a href="/purchasemedicines/">View All Purchases</a></li>
+                        <li><a href="/revenueprofit/">Revenue and profit</a></li>
+                    </ul>
+                </li>
+                
+
+                <li><a href="/logout/">Log out</a></li>
+            </ul>
+
+
+         </div>
+        </div>
+       
+        </nav>
+        {% block javascript %}
+        {% endblock %}
+
+
+        {% block content %}
+        {% endblock %}
+        <!-- footer here -->
+
+        
+    </div>
+
+    </body>
+</html>

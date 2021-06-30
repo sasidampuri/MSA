@@ -1,0 +1,36 @@
+
+{% extends 'app/base.html' %}
+
+
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<div class="container" style="opacity: 0.8">
+    <div class="col-md-2"></div>
+    <div class="panel panel-default col-md-8 jumcust2">
+        <div class="panel-body">
+
+
+<form method="POST" class="form-group">
+     
+    	{% csrf_token %}
+       
+
+    <h1> Welcome</h1>
+
+    <p>..................</p>
+
+ </form>
+
+  </div>
+    </div>
+  </div>
+
+
+
+{% endblock %}
+
+
+
+
